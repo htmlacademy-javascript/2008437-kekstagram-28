@@ -1,4 +1,4 @@
-const isCharLimit = (string, maxChars) => string.length <= maxChars;
+const isCharLimitPassed = (string, maxChars) => string.length <= maxChars;
 
 const isPalindrome = (string) => {
   let stringNormalized = '';
@@ -23,4 +23,16 @@ const extractDigits = (string) => {
   return Number(digits);
 };
 
-console.log(extractDigits('2023 год 213423423423'));
+const reachStringLength = (string, length, add) => {
+  let stringEnhanced = string;
+  if (string.length < length) {
+    while (stringEnhanced.length < length) {
+      stringEnhanced = add + stringEnhanced;
+    }
+    while (stringEnhanced.length > length) {
+      stringEnhanced = stringEnhanced.substring(1);
+    }
+  }
+  return stringEnhanced;
+};
+
