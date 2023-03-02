@@ -1,11 +1,11 @@
 const isCharLimitPassed = (string, maxChars) => string.length <= maxChars;
 
 // Cтрока короче 20 символов
-console.log(isCharLimitPassed('проверяемая строка', 20)); // true
+isCharLimitPassed('проверяемая строка', 20); // true
 // Длина строки ровно 18 символов
-console.log(isCharLimitPassed('проверяемая строка', 18)); // true
+isCharLimitPassed('проверяемая строка', 18); // true
 // Строка длиннее 10 символов
-console.log(isCharLimitPassed('проверяемая строка', 10)); // false
+isCharLimitPassed('проверяемая строка', 10); // false
 
 const isPalindrome = (string) => {
   let stringNormalized = '';
@@ -20,13 +20,13 @@ const isPalindrome = (string) => {
 };
 
 // Строка является палиндромом
-console.log(isPalindrome('топот')); // true
+isPalindrome('топот'); // true
 // Несмотря на разный регистр, тоже палиндром
-console.log(isPalindrome('ДовОд')); // true
+isPalindrome('ДовОд'); // true
 // Это не палиндром
-console.log(isPalindrome('Кекс')); // false
+isPalindrome('Кекс'); // false
 // Это палиндром
-console.log(isPalindrome('Лёша на полке клопа нашёл ')); // true
+isPalindrome('Лёша на полке клопа нашёл '); // true
 
 const extractDigits = (string) => {
   const normalizedString = String(string);
@@ -39,11 +39,11 @@ const extractDigits = (string) => {
   return digits === '' ? NaN : Number(digits);
 };
 
-console.log(extractDigits('2023 год')); // 2023
-console.log(extractDigits('ECMAScript 2022')); // 2022
-console.log(extractDigits('1 кефир, 0.5 батона')); // 105
-console.log(extractDigits('агент 007')); // 7
-console.log(extractDigits('а я томат')); // NaN
+extractDigits('2023 год'); // 2023
+extractDigits('ECMAScript 2022'); // 2022
+extractDigits('1 кефир, 0.5 батона'); // 105
+extractDigits('агент 007'); // 7
+extractDigits('а я томат'); // NaN
 
 const reachStringLength = (string, length, add) => {
   let stringEnhanced = string;
