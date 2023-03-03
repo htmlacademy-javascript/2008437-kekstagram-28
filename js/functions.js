@@ -45,30 +45,39 @@ extractDigits('1 кефир, 0.5 батона'); // 105
 extractDigits('агент 007'); // 7
 extractDigits('а я томат'); // NaN
 
-const reachStringLength = (string, length, add) => {
-  let stringEnhanced = string;
-  if (string.length < length) {
-    while (stringEnhanced.length < length) {
-      stringEnhanced = add + stringEnhanced;
-    }
-    while (stringEnhanced.length > length) {
-      stringEnhanced = stringEnhanced.substring(1);
-    }
+const reachStringLength = (string, targetLength, adding) => {
+  // targetLength = targetLength >> 0; //floor if number or convert non-number to 0;
+  let stringAdding = '';
+  if (string.length > targetLength) {
+    return string;
   }
-  return stringEnhanced;
+  targetLength = targetLength - string.length;
+  if (targetLength > adding.length && targetLength % adding.length === 0) {
+    adding += adding.repeat(targetLength / adding.length); //append to original to ensure we are longer than needed
+  }
+  if (targetLength > adding.length && targetLength % adding.length !== 0) {
+    const stringAddingFraction = targetLength % adding.length;
+    stringAdding = adding.repeat(Math.floor(targetLength / adding.length));
+    for (let i = 0; i < stringAddingFraction; i += 1) {
+      stringAdding = adding[i] + stringAdding;
+    }
+    return stringAdding + string;
+  }
+  return adding.slice(0,targetLength) + string;
 };
 
 // Добавочный символ использован один раз
-console.log(reachStringLength('1', 2, '0')); // '01'
+reachStringLength('1', 2, '0'); // '01'
 
 // Добавочный символ использован три раза
-console.log(reachStringLength('1', 4, '0')); // '0001'
+reachStringLength('1', 4, '0'); // '0001'
 
 // Добавочные символы обрезаны с конца
-console.log(reachStringLength('q', 4, 'werty')); // 'werq'
+reachStringLength('q', 4, 'werty'); // 'werq'
 
 // Добавочные символы использованы полтора раза
-console.log(reachStringLength('q', 4, 'we')); // 'wweq'
+reachStringLength('q', 4, 'we'); // 'wweq'
 
 // Добавочные символы не использованы, исходная строка не изменена
-console.log(reachStringLength('qwerty', 4, '0')); // 'qwerty'
+reachStringLength('qwerty', 4, '0'); // 'qwerty'
+
