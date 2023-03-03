@@ -46,14 +46,13 @@ extractDigits('агент 007'); // 7
 extractDigits('а я томат'); // NaN
 
 const reachStringLength = (string, targetLength, adding) => {
-  // targetLength = targetLength >> 0; //floor if number or convert non-number to 0;
   let stringAdding = '';
   if (string.length > targetLength) {
     return string;
   }
   targetLength = targetLength - string.length;
   if (targetLength > adding.length && targetLength % adding.length === 0) {
-    adding += adding.repeat(targetLength / adding.length); //append to original to ensure we are longer than needed
+    adding += adding.repeat(targetLength / adding.length);
   }
   if (targetLength > adding.length && targetLength % adding.length !== 0) {
     const stringAddingFraction = targetLength % adding.length;
