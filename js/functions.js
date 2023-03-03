@@ -80,4 +80,3 @@ reachStringLength('q', 4, 'we'); // 'wweq'
 
 // Добавочные символы не использованы, исходная строка не изменена
 reachStringLength('qwerty', 4, '0'); // 'qwerty'
-
